@@ -1,7 +1,15 @@
-  // TODO: Replace with your project's customized code snippet
+<html>
+<head>
   <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+</head>
+<body>
+  <div id='mensagens'></div>
+  <input type="text" id="nomeusuario" placeholder="Seu nome...">
+  <input type="text" id="mensagem" placeholder="Sua mensagem...">
+  <button id="enviar">Enviar</button>
   <script>
-    // Initialize Firebase
+     // Initialize Firebase
     var config = {
       apiKey: 'AIzaSyAVJQAGggfY5uOFeKV7oXZtECWpZkXrXMA',
       authDomain: 'fifeiros-790df.firebaseapp.com',
@@ -10,4 +18,24 @@
     };
 
     firebase.initializeApp(config);
+
+
+    $(document).on('click', '#enviar', function(e){
+
+      writeUserData($('#nomeusuario').val(), $('#mensagem').val());
+
+    })
+
+
+
+
+
+    function writeUserData(name, message) {
+      firebase.database().ref('messages/' + name).set({
+        username: name,
+        message: message
+      });
+    }
   </script>
+</body>
+</html>
