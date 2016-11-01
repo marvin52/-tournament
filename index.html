@@ -22,7 +22,7 @@
 
     $(document).on('click', '#enviar', function(e){
 
-      writeUserData($('#nomeusuario').val(), $('#mensagem').val());
+      writeUserData('1', $('#nomeusuario').val());
 
     })
 
@@ -30,10 +30,9 @@
 
 
 
-    function writeUserData(name, message) {
-      firebase.database().ref('messages/' + name).set({
-        username: name,
-        message: message
+    function writeUserData(userId, name) {
+      firebase.database().ref('users/' + userId).set({
+        username: name
       });
     }
   </script>
