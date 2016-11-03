@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['source/**/*.js', 'source/**/*.sass'],
+        files: ['source/**/*.js', 'source/**/*.sass', '**/*.html'],
         tasks: ['build'],
         options: {
           debounceDelay: 250,
