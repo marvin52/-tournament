@@ -1,8 +1,8 @@
 // Gruntfile.js
 // our wrapper function (required by grunt and its plugins)
 // all configuration goes inside this function
-var exec = require('exec');
-
+//var exec = require('exec');
+var exec = require('child_process').exec
 
 module.exports = function(grunt) {
 
