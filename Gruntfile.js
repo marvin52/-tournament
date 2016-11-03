@@ -1,6 +1,9 @@
 // Gruntfile.js
 // our wrapper function (required by grunt and its plugins)
 // all configuration goes inside this function
+var exec = require('exec');
+
+
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
@@ -38,13 +41,33 @@ module.exports = function(grunt) {
           debounceDelay: 250,
         },
       },
-    }
+    },
+    callback:{}
   });
+
+grunt.registerTask('callback', 'A sample task that logs stuff.', function() {
+    exec('git add . && git commit -m "Update num: ' + Date.now() + ' "', 
+      function(err, out, code) {
+      if (err instanceof Error)
+        throw err;
+      grunt.log.writeln(err);
+      grunt.log.writeln(out);
+      process.exit(code);
+    });
+});
+
+
+
+
+  grunt.event.on('callback', function(action, filepath, target) {
+    console.log('foi callback')
+  });
+
 
   // ===========================================================================
   // LOAD GRUNT PLUGINS ========================================================
   // ===========================================================================
   // we can only load these if they are in our package.json
   // make sure you have run npm install so our app can find these
-  grunt.registerTask('build', ['browserify', 'sass']);
+  grunt.registerTask('build', ['browserify', 'sass', 'callback']);
 };

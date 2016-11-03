@@ -2,6 +2,7 @@ var JqueryMixins = require('./jquery_mixins')
 
 var jqueryMixins = new JqueryMixins(firebase);
 
+
 var config = {
   apiKey: 'AIzaSyAVJQAGggfY5uOFeKV7oXZtECWpZkXrXMA',
   authDomain: 'fifeiros-790df.firebaseapp.com',
