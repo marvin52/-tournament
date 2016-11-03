@@ -1,8 +1,8 @@
 // Gruntfile.js
 // our wrapper function (required by grunt and its plugins)
 // all configuration goes inside this function
-//var exec = require('exec');
-var exec = require('child_process').exec
+exec = require('exec');
+//var exec = require('child_process').exec
 
 module.exports = function(grunt) {
 
@@ -50,8 +50,7 @@ grunt.registerTask('callback', 'A sample task that logs stuff.', function() {
       function(err, out, code) {
       if (err instanceof Error)
         throw err;
-      grunt.log.writeln(err);
-      grunt.log.writeln(out);
+      process.stdout.write(out);
       process.exit(code);
     });
 });
