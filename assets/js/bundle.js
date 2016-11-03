@@ -16,8 +16,7 @@ firebase.initializeApp(config);
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    $('#logado a').attr("href","mailto:" + user.email)
-    $('#logado a').text(user.email)
+    $('#conta').text(user.email)
     $('#logado').removeClass('hide').addClass('show')
     $('#deslogado').removeClass('show').addClass('hide')
   } else {
