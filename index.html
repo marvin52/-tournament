@@ -1,40 +1,29 @@
 <html>
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <script defer src="assets/js/bundle.js"></script>
 </head>
 <body>
-  <div id='mensagens'></div>
-  <input type="text" id="nomeusuario" placeholder="Seu nome...">
-  <input type="text" id="mensagem" placeholder="Sua mensagem...">
+  <header id="deslogado" class="show">
+    Sign-up
+    <input type="email" id="email" placeholder="Seu email">
+    <input type="password" id="password" placeholder="Sua senha">
+    <button id="create">Criar Usuário</button>
+    <button id="logar">Logar Usuário</button>
+  </header>
+  <header id="logado" class="hide">
+    <a href="#">email aqui</a>
+    <button id="deslogar">Desogar Usuário</button>
+  </header>
+  <hr>
+  <br>
+  <ul id="messages"></ul>
+  <input type="text" id="messageInput"/>
   <button id="enviar">Enviar</button>
-  <script>
-     // Initialize Firebase
-    var config = {
-      apiKey: 'AIzaSyAVJQAGggfY5uOFeKV7oXZtECWpZkXrXMA',
-      authDomain: 'fifeiros-790df.firebaseapp.com',
-      databaseURL: 'https://fifeiros-790df.firebaseio.com/',
-      storageBucket: 'gs://fifeiros-790df.appspot.com'
-    };
-
-    firebase.initializeApp(config);
-
-
-    $(document).on('click', '#enviar', function(e){
-
-      writeUserData('kNPrDhoNwLeVzLKt0E5EzEuGG3o2', $('#nomeusuario').val());
-
-    })
-
-
-
-
-
-    function writeUserData(userId, name) {
-      firebase.database().ref('users/' + userId).set({
-        username: name
-      });
-    }
-  </script>
 </body>
 </html>
