@@ -46,7 +46,7 @@ module.exports = function(grunt) {
   });
 
 grunt.registerTask('callback', 'A sample task that logs stuff.', function() {
-    exec('git add . && git commit -m "Update num: ' + Date.now() + ' "', 
+    exec('git add . && git commit -m "Update num: ' + Date.now() + ' " && git push origin master', 
       function(err, out, code) {
       if (err instanceof Error)
         throw err;
